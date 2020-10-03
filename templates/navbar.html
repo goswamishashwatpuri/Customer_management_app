@@ -1,0 +1,60 @@
+<style>
+
+.logout_user {
+  margin-right: 10px;
+  color: #fff;
+}
+
+	#navbar-profile-icon{
+		max-width: 60px;
+		max-height:60px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+
+</style>
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  
+    <a class="navbar-brand" href="#" style="font-family:'opan snas';transform:rotate(-2deg);" >Shashwat</a>
+    
+      <ul class="navbar-nav">
+
+      {% if request.user.is_staff %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Products</a>
+        </li> 
+      {% endif %}
+
+      {% if not request.user.is_staff %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_settings' %}">Settings</a>
+            
+        </li> 
+        <li class="nav-item">    
+            <img id="navbar-profile-icon" src="{{request.user.customer.profile_pic.url}}">
+        </li> 
+      {% endif %}
+
+      </ul>
+  </div>
+    
+  <span>
+    <button class="btn btn-outline-success bt-sm logout_user">Hello! {{request.user}}</button></a>
+  </span>
+  <span>
+    <a class="nav-item logout_user" href="{% url 'logout' %}" ><button class="btn btn-danger btn-sm">Logout </button></a>
+  </span>
+
+</nav>

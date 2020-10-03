@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% include 'status.html' %}
+
+
+<!-- Orders section -->
+<div class="row">
+
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+                
+					<th>Product</th>
+					<th>Category</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					
+				</tr>
+
+				<tr><td></td><td></td><td></td><td></td></tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.Product}}</td>
+						<td>{{order.Product.category}}</td>
+						<td>{{order.date_created}}</td>
+
+						<td>
+							{% if order.status == "Delivered" %}
+
+							<span class = 'btn btn-success btn-sm'>{{order.status}}</span>
+
+							{% elif order.status == "Pending" %}
+
+							<span class = 'btn btn-danger text-white btn-sm'>{{order.status}}</span>
+
+							{% elif order.status == "Out for delivery" %}
+
+							<span class = 'btn btn-warning text-dark btn-sm'>{{order.status}}</span>
+
+							{% endif %}
+						</td>
+
+
+						{% comment  %}
+                        
+						<!--<td><a href="{% url 'update_order' order.id %}"><button type="button" class="btn btn-light btn-sm">Update</button></a>
+						    <td><a href="{% url 'delete_order' order.id %}"><button type="button" class="btn btn-light btn-sm">Remove</button></a> -->
+                       
+                       {% endcomment %}
+
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}

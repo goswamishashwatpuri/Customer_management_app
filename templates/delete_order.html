@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<br><br><br><br>
+<div class="card card-body col-md-6">
+<form method='POST'>
+
+    {% csrf_token %}
+
+    <p>Are you sure you want to delete ORDER <br>( {{name}} )</p>
+    <a href="{% url 'home' %}"><button class="btn btn-success">Cancel</button></a>
+    <input type="submit" class="btn btn-danger" name="confirm">
+</form>
+</div>
+
+{% endblock content %}
