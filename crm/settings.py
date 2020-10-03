@@ -88,8 +88,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'database1',
         'USER' : 'crm',
-        'PASSWORD' : 'wsad1234567890',
-        'HOST' : 'crm.cqmpxnws1ysx.ap-south-1.rds.amazonaws.com',
+        'PASSWORD' : '',
+        'HOST' : '',
         'PORT' : '5432',
     }
 }
@@ -146,15 +146,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'spg9406940402@gmail.com'
-EMAIL_HOST_PASSWORD = 'shashwat1234567890'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 # AWS S3 buckets configuraiton
 # install django-storages and boto3 (using pip)
 
-AWS_ACCESS_KEY_ID = "AKIARPZ474E4KRSESIP5"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_STORAGE_BUCKET_NAME = "shashwat-crm"
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
+AWS_STORAGE_BUCKET_NAME = ""
 # AWS region confing
 AWS_S3_HOST = 's3.ap-south-1.amazonaws.com'
 AWS_S3_REGION_NAME= "ap-south-1"  # for mumbai server

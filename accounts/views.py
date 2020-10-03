@@ -168,57 +168,11 @@ def customers(request, customer_id):
     return render(request, 'customers.html', context)
 
 
-
-@login_required(login_url='/login/')
-def create_order(request, customer_id):
-
-    order_form_set = inlineformset_factory(Customer, Order, fields=('Product','status'), extra=10)
-    customer = Customer.objects.get(id=customer_id)
-    
-    # formset is instance of order_form_set
-    formset = order_form_set(queryset= Order.objects.none(), instance=customer)
-    # form = order_form(initial={'Customer' : customer})
-    context = {
-        'formset' : formset,
-        'customer_id' : customer_id,
-    }
-
-    if request.method == 'POST':
-
-        #form = order_form(request.POST)
-        formset = order_form_set(request.POST, instance=customer)
-        if formset.is_valid():
-            formset.save()
-            return redirect(f'/customers/{customer.id}')
-
-    return render(request, 'order_form.html', context)
+# put create_order snippet below this comment
 
 
 
-@login_required(login_url='/login/')
-def update_order(request, order_id):
-
-    order = Order.objects.get(id=order_id)
-    form = order_form(instance=order)
-
-    if request.method == 'POST':
-        form = order_form(request.POST, instance=order)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-
-    context = {'form': form}
-    return render(request, 'update_order.html', context)
 
 
-@login_required(login_url='/login/')
-def delete_order(request, order_id):
 
-    order = Order.objects.get(id=order_id)
-
-    if request.method == 'POST':
-        order.delete()
-        return redirect('/')
-
-    context = {'name': order}
-    return render(request, 'delete_order.html', context)
+# put update and delete order snippets below this comment 
