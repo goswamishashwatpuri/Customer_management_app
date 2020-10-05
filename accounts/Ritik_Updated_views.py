@@ -1,7 +1,3 @@
-# Ritik Kochar
-# github link : https://github.com/RitikKochar0509
-# Btech : 3rd year IT
-
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import inlineformset_factory
@@ -172,8 +168,9 @@ def customers(request, customer_id):
     return render(request, 'customers.html', context)
 
 
-# put create_order snippet below this comment
-## Added Code
+# create_order
+# Ritik Kochar Btech : 3rd year IT    github link : https://github.com/RitikKochar0509
+
 @login_required(login_url='/login/')
 def create_order(request, customer_id):
 
