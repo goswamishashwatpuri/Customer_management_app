@@ -44,4 +44,20 @@ class Tag(models.Model):
 
 
 # insert Class Order(): below this comment
+class Order(models.Model):
 
+    STATUS = (
+        ('Pending','Pending'),
+        ('Out for delivery', 'Out for delivery'),
+        ('Delivered','Delivered'),
+    )
+
+    Customer = models.ForeignKey(Customer, null=True, blank=True, on_delete= models.SET_NULL)
+    Product = models.ForeignKey(Product, null=True, on_delete= models.SET_NULL)
+
+    status = models.CharField(max_length=100, null=True, choices=STATUS)
+    date_created = models.DateTimeField(auto_now_add=True, null =True)
+    tags = models.ManyToManyField(Tag)
+
+    def _str_(self):
+        return self.Product.name + ' : ' + self.Customer.name
